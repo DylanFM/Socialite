@@ -32,17 +32,17 @@
         }
     });
 
-    var initBaidu = function(instance) {
-      var el = document.createElement('div');
-      // Once script is loaded, Baidu share looks for this global config
-      window.bdShare_config = {
-        type: instance.el.getAttribute('data-type') || 'small',
-        color: instance.el.getAttribute('data-color') || 'blue'
-      };
-      el.className = "bdlikebutton";
-      instance.el.appendChild(el);
-    };
-
-    Socialite.widget('baidu', 'like', { init: initBaidu });
+    Socialite.widget('baidu', 'like', { 
+      init: function(instance) {
+        var el = document.createElement('div');
+        // Once script is loaded, Baidu share looks for this global config
+        window.bdShare_config = {
+          type: instance.el.getAttribute('data-type') || 'small',
+          color: instance.el.getAttribute('data-color') || 'blue'
+        };
+        el.className = "bdlikebutton";
+        instance.el.appendChild(el);
+      }
+    });
 
 })(window, window.document, window.Socialite);
